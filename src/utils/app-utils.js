@@ -14,7 +14,7 @@ function CreateDevColumn() {
    } else {
       return (
          <>
-         <p class="wait">Waiting</p>
+         <p className="wait">Waiting</p>
          </>
       )
    }

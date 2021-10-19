@@ -3,7 +3,6 @@ import { StatContext } from '../context/app-context';
 
 function AppStats() {
    const arg = useContext(StatContext);
-   // arg.getStatisticData();
    const title = arg.getStatisticData().title;
    const devFront = arg.getStatisticData().dev.front;
    const devBack = arg.getStatisticData().dev.back;
@@ -64,9 +63,9 @@ function AppStats() {
       }
    }
 
-   function getWidhtValue(arg) {
-      return arg.lenght
-   }
+   // function getWidhtValue(arg) {
+   //    return arg.lenght
+   // }
    const devTestDifferense = getDifferense(devColumn, testColumn);
    const testProdDifferense = getDifferense(testColumn, prodColumn);
    const valueDevTest = getDifferenseValue(devTestDifferense);
@@ -118,7 +117,7 @@ function AppStats() {
              <div className="test-column test">
                <span className="arrow"></span>
                <figure>
-                  <div class="differense__dev-test"><span class="value">{valueDevTest}</span></div>
+                  <div className="differense__dev-test"><span className="value">{valueDevTest}</span></div>
                   <div className="wrapper__test wrapper-column">
                      <div className="test-column__client value"><span>{testFront}</span></div>
                      <div className="test-column__server value"><span>{testBack}</span></div>
@@ -130,7 +129,7 @@ function AppStats() {
              <div className="test-column prod">
                <span className="arrow"></span>
                <figure>
-                  <div class="differense__test-prod"><span class="value">{valueTestProd}</span></div>
+                  <div className="differense__test-prod"><span className="value">{valueTestProd}</span></div>
                   <div className="wrapper__prod wrapper-column">
                      <div className="test-column__client value"><span>{prodFront}</span></div>
                      <div className="test-column__server value"><span>{prodBack}</span></div>
@@ -141,7 +140,7 @@ function AppStats() {
              </div>
              <div className="test-column norm">
                <figure>
-                 <div className="test-column__norm"><div><span class="test-column__norm_value">{normColumn}</span></div></div>
+                 <div className="test-column__norm"><div><span className="test-column__norm_value">{normColumn}</span></div></div>
                  <figcaption>норматив</figcaption>
                </figure>
              </div>
@@ -150,6 +149,14 @@ function AppStats() {
              <div className="test-specification test-specification__client"><span></span>Клиентская часть</div>
              <div className="test-specification test-specification__server"><span></span>Серверная часть</div>
              <div className="test-specification test-specification__data"><span></span>База данных</div>
+            </div>
+            <h2>Нажимай на кнопки: выбирай другие данные</h2>
+            <div className="wrapper__buttons" onClick={(evt) => arg.setUrl(`https://rcslabs.ru/ttrp${evt.target.innerHTML}.json`)}>
+               <button className="button button__1">1</button>
+               <button className="button button__2">2</button>
+               <button className="button button__3">3</button>
+               <button className="button button__4">4</button>
+               <button className="button button__5">5</button>
            </div>
          </div>
        </div>

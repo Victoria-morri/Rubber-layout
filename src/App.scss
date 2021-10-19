@@ -31,6 +31,10 @@ $x: calc(#{$height_column} - var(--height_column2_client));
 $height_column2_test: calc(var(--height_test_column) + var(--gapColumn) + #{$height_arrow});
 $height_column3_prod: calc(var(--height_prod_column) + var(--gapColumn) + #{$height_arrow});
 
+html {
+   min-width: 400px !important;
+}
+
 .wait {
    font-family: 'Roboto', sans-serif;
    color: #898290;
@@ -40,6 +44,7 @@ $height_column3_prod: calc(var(--height_prod_column) + var(--gapColumn) + #{$hei
 
 body {
    background-color: white;
+
 
 }
 .wrapper {
@@ -355,4 +360,29 @@ figcaption {
 
 .test-specification__data > span {
    background-color:#E85498;
+}
+
+h2 {
+   // margin-top: 30px;
+   margin: 30px auto 0;
+}
+
+.wrapper__buttons{
+   margin-top: 15px;
+   display: flex;
+   height: 50px;
+   justify-content: space-between;
+   align-content: center;
+}
+
+.button {
+   border-radius: 5px;
+   border-style: none;
+   box-shadow: rgba(245, 244, 247, .25) 0 1px 1px inset;
+   background-color: #898290;
+   color: #fff;
+   cursor: pointer;
+   height: 100%;
+   line-height: 100%;
+   width: 15%;
 }

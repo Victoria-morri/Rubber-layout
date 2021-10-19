@@ -19,6 +19,9 @@
   --width_dev_test_differense_block: 0px;
   --width_test_prod_differense_block: 0px; }
 
+html {
+  min-width: 400px !important; }
+
 .wait {
   font-family: 'Roboto', sans-serif;
   color: #898290;
@@ -292,5 +295,26 @@ figcaption {
 
 .test-specification__data > span {
   background-color: #E85498; }
+
+h2 {
+  margin: 30px auto 0; }
+
+.wrapper__buttons {
+  margin-top: 15px;
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  align-content: center; }
+
+.button {
+  border-radius: 5px;
+  border-style: none;
+  box-shadow: rgba(245, 244, 247, 0.25) 0 1px 1px inset;
+  background-color: #898290;
+  color: #fff;
+  cursor: pointer;
+  height: 100%;
+  line-height: 100%;
+  width: 15%; }
 
 /*# sourceMappingURL=App.css.map */
