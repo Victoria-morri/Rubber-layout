@@ -1,6 +1,6 @@
 import './App.css';
-import { StatsProvider } from './app-context/app-context';
-import CreateDevColumn from './app-utils/app-utils';
+import { StatsProvider } from './context/app-context';
+import CreateDevColumn from './utils/app-utils';
 //../src/app-context/app-context';
 function App() {
 
