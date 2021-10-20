@@ -17,26 +17,36 @@ function AppStats() {
    const maxColumnHeight = 270;
    const columnHeight = 315;
    const minColumnHeight = 39.9;
+   const widthForOneLetter = 10;
+   const widthForPadding = 18;
+   const allPercent = 100;
+   const devColumn = getSumDevColumn(devFront, devBack, devDb);
+   const prodColumn = getSumDevColumn(prodFront, prodBack, prodDb);
+   const testColumn = getSumDevColumn(testFront, testBack, testDb);
+   const maxColumn = Math.max(devColumn, prodColumn, testColumn, normColumn) > 0 ? Math.max(devColumn, prodColumn, testColumn, normColumn) : null;
+   const devTestDifferense = getDifferense(devColumn, testColumn);
+   const testProdDifferense = getDifferense(testColumn, prodColumn);
+   const valueDevTest = getDifferenseValue(devTestDifferense);
+   const valueTestProd = getDifferenseValue(testProdDifferense);
+   const colorBGDevTestDifferense = getColorDifferense(devTestDifferense);
+   const colorBGTestProdDifferense = getColorDifferense(testProdDifferense);
+   const widthOfDevTestDifferenseBlock = (devTestDifferense.toString().length * widthForOneLetter + widthForPadding) + 'px';
+   const widthOfTestProdDifferenseBlock = (testProdDifferense.toString().length * widthForOneLetter + widthForPadding) + 'px';
 
    function getSumDevColumn(...arg) {
       return [...arg].reduce((prev, current)=>prev + current, 0);
    }
 
-   const devColumn = getSumDevColumn(devFront, devBack, devDb);
-   const prodColumn = getSumDevColumn(prodFront, prodBack, prodDb);
-   const testColumn = getSumDevColumn(testFront, testBack, testDb);
-   const maxColumn = Math.max(devColumn, prodColumn, testColumn, normColumn) > 0 ? Math.max(devColumn, prodColumn, testColumn, normColumn) : null;
-
    function getPercentOfHeight(arg) {
-      return (arg / maxColumn * 100);
+      return (arg / maxColumn * allPercent);
    }
 
    function addPxString(number) {
-      return number.toString() + 'px'
-    }
+      return number + 'px'
+   }
 
    function getPxForPercent(percent) {
-      return Math.round(percent * (maxColumnHeight / 100));
+      return Math.round(percent * (maxColumnHeight / allPercent));
    }
 
    function getDifferense(arg1, arg2) {
@@ -46,34 +56,14 @@ function AppStats() {
    function getDifferenseValue(arg) {
       if (arg === 0) {
          return arg;
-      } else if (arg > 0) {
-         return `\u2191 +${arg}`;
-      } else {
-         return `\u2193 ${arg}`;
-      }
+      } else { return arg > 0 ? `\u2191 +${arg}` : `\u2193 ${arg}` }
    }
 
    function getColorDifferense(arg) {
       if (arg === 0) {
          return 'black';
-      } else if (arg > 0) {
-         return '#00CC99';
-      } else {
-         return '#FC440F';
-      }
+      } else { return arg > 0 ? '#00CC99' : '#FC440F' }
    }
-
-   // function getWidhtValue(arg) {
-   //    return arg.lenght
-   // }
-   const devTestDifferense = getDifferense(devColumn, testColumn);
-   const testProdDifferense = getDifferense(testColumn, prodColumn);
-   const valueDevTest = getDifferenseValue(devTestDifferense);
-   const valueTestProd = getDifferenseValue(testProdDifferense);
-   const colorBGDevTestDifferense = getColorDifferense(devTestDifferense);
-   const colorBGTestProdDifferense = getColorDifferense(testProdDifferense);
-   const widthOfDevTestDifferenseBlock = (devTestDifferense.toString().length * 10 + 18) + 'px';
-   const widthOfTestProdDifferenseBlock = (testProdDifferense.toString().length * 10 + 18) + 'px';
 
    function getColumnHeight(arg) {
       return arg > minColumnHeight ? arg : minColumnHeight;
